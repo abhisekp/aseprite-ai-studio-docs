@@ -1,0 +1,1 @@
+{"name":"aseprite-ai-studio-docs","private":true,"type":"module","scripts":{"docs:build":"vitepress build handbook","docs:dev":"vitepress dev handbook --host 127.0.0.1","docs:preview":"vitepress preview handbook --host 127.0.0.1"},"devDependencies":{"vitepress":"2.0.0-alpha.21"}}
