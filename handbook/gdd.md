@@ -1,5 +1,7 @@
 # Game Design Document
 
+**Release note:** OTA support is in the private 0.3.0 build; reference-character preservation is being verified for 0.3.1. Draft releases are not offered by the updater.
+
 **Product:** Aseprite AI Studio · **Document baseline:** 18 November 2026 · **Audience:** solo game developers, pixel artists, technical artists and assistant-driven creation workflows.
 
 ## High concept
@@ -64,7 +66,7 @@ Available state controls: **idle, walk, run, attack, hurt, death, jump**. Availa
 
 Per clip: 2–8 frames; playback: 1–24 FPS. The current app allows at most 32 total frames and 8,388,608 total frame pixels per job. At 1024×1024, this permits eight total frames. Generate additional states or directions as separate jobs. Cancellation or failure does not publish a partial animation.
 
-The built-in local animation path uses independent reference-conditioned ComfyUI img2img calls with pose/phase prompts. It is **experimental**: temporal consistency, precise anatomy and requested facing are not guaranteed. Ollama and cloud animation are not enabled through this generation path. A higher-resolution image does not fix a model’s motion errors.
+The built-in local animation path uses reference-conditioned ComfyUI calls with pose/phase prompts. Character preservation adds an IP-Adapter for the original reference, a fixed seed and local per-frame vision review. Missing dependencies or a failed/uncertain review reject the sequence. Disabling preservation produces an unverified draft. Identity checks do not establish correct motion. It is **experimental**: temporal consistency, precise anatomy and requested facing are not guaranteed. Ollama is used only for local identity review, not image synthesis; cloud animation is not enabled through this generation path. A higher-resolution image does not fix a model’s motion errors.
 
 An AI-generated coherent sheet produced with an external built-in image tool was added as a reviewed example. That one-off asset does not imply that the desktop app includes that tool as a provider. Its provenance remains distinct from the local generation engine.
 

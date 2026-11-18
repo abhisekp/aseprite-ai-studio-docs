@@ -34,3 +34,16 @@ npm run desktop:dist
 ```
 
 The preparation step needs a verified Aseprite portable directory via `ASEPRITE_PORTABLE_DIR` (or this workspace’s known portable path). It copies only the editor binary, data, DLLs and license/build notices into a staging directory and excludes locally paired studio scripts. Packaging excludes artwork, model files, credentials, logs, `.runtime` and developer caches.
+
+
+## App updates
+
+From the 0.3.0 build, use **Help > Check for updates (both apps)** in Studio or **App updates** in its Aseprite panel. One initial installation registers the desktop link. The updater reads published private GitHub releases through the local official GitHub CLI sign-in. Startup checks are optional. Tokens are not shipped inside the app. Draft releases are excluded, and downloads require size/SHA-256 verification before a separate install confirmation.
+
+Aseprite updates are installed side by side and used on subsequent launches from Studio. Existing artwork, shared settings and previous editor versions are retained. The original standalone editor directory is not overwritten. Studio updates use the Windows installer after generation finishes and Aseprite is closed. Portable Studio offers the setup installer as its upgrade path. Existing older binaries need one manual installation to gain the updater.
+
+## Reference preservation in 0.3.1 verification
+
+The original reference conditions every frame through IP-Adapter and CLIP ViT-H. A fixed seed and bounded variation reduce identity drift. A local Ollama vision model compares each processed frame against the original in one side-by-side image. Failed or uncertain checks reject the whole sequence. The preview distinguishes checked identity from unverified drafts. Required models must already be installed; there are no automatic downloads or cloud fallbacks.
+
+A two-frame 128px diagnostic preserved the swordsman's identity and passed local checks. It showed little motion and does not establish convincing jumping, sword drawing, direction accuracy or 1024px animation quality. Artist review remains necessary. Vision confidence is a heuristic, not a guarantee.
