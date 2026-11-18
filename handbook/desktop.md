@@ -47,3 +47,10 @@ Aseprite updates are installed side by side and used on subsequent launches from
 The original reference conditions every frame through IP-Adapter and CLIP ViT-H. A fixed seed and bounded variation reduce identity drift. A local Ollama vision model compares each processed frame against the original in one side-by-side image. Failed or uncertain checks reject the whole sequence. The preview distinguishes checked identity from unverified drafts. Required models must already be installed; there are no automatic downloads or cloud fallbacks.
 
 A two-frame 128px diagnostic preserved the swordsman's identity and passed local checks. It showed little motion and does not establish convincing jumping, sword drawing, direction accuracy or 1024px animation quality. Artist review remains necessary. Vision confidence is a heuristic, not a guarantee.
+
+
+## Free signed OTA updates (0.3.2 verification)
+
+The update feed uses an app-specific Ed25519 signature as well as SHA-256. Both the editor and Studio build pipelines sign a manifest binding the version, source/build run and exact artifact hashes. The application pins the public verification key and rejects unsigned, altered, wrong-key or cross-release update metadata. Its private signing key is stored only in a private GitHub Actions secret and is supplied solely to trusted main-branch signing steps. It is not committed or distributed with the application.
+
+This requires no paid signing service and makes no changes to Windows certificate trust. It verifies updates for these applications; it does not provide Windows Authenticode publisher trust or remove SmartScreen warnings. A first manual installation is necessary to acquire the verifier. Draft releases remain outside the update feed. Replacing a pinned key requires a planned trust transition; it is never rotated automatically.

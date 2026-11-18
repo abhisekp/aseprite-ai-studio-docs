@@ -1,6 +1,6 @@
 # Game Design Document
 
-**Release note:** OTA support is in the private 0.3.0 build; reference-character preservation is being verified for 0.3.1. Draft releases are not offered by the updater.
+**Release note:** OTA support and basic reference-preservation checks passed in private 0.3.1 candidates; free cryptographically signed OTA updates are being verified for 0.3.2. Draft releases are not offered by the updater.
 
 **Product:** Aseprite AI Studio · **Document baseline:** 18 November 2026 · **Audience:** solo game developers, pixel artists, technical artists and assistant-driven creation workflows.
 
