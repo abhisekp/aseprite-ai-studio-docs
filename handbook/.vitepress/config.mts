@@ -5,6 +5,17 @@ export default defineConfig({
   base: "./",
   lang: "en-US",
   lastUpdated: false,
+  markdown: {
+    config(md) {
+      const fence = md.renderer.rules.fence!;
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        if (tokens[idx].info.trim() === "mermaid") {
+          return `<MermaidDiagram :source="${md.utils.escapeHtml(JSON.stringify(tokens[idx].content))}" />`;
+        }
+        return fence(tokens, idx, options, env, self);
+      };
+    },
+  },
   themeConfig: {
     nav: [
       { text: "GDD", link: "/gdd" },
